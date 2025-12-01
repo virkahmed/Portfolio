@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display} from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/providers";
-
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import { cn } from "@/lib/utils";
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-serif'
+})
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,11 +30,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          'flex min-h-screen flex-col font-serif antialiased',
+          geistSans.variable,
+          playfair.variable
+        )}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          <main className='grow pt-24'>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

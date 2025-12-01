@@ -7,7 +7,6 @@ const projects = [
     description:
       "Interactive machine learning visualizer for credit card fraud detection. Implements clustering (MST-based), decision stumps, and AdaBoost boosting algorithm with real-time training visualization.",
     tech: ["Next.js", "TypeScript", "Machine Learning", "Canvas API"],
-    github: "https://github.com/virkahmed",
     demo: "https://fraud-detector-nu.vercel.app/",
     featured: true,
   },
